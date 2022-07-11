@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{%block title %}List réception {%endblock%}
+
+{%block content %}
+<ul>
+{% for reception in receptions %}
+<li>{{reception.nomProd}}</li> 
+{%endfor%}
+</ul>
+
+
+{%endblock%}

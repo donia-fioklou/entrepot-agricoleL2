@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Connexion</title>
+    {%load static%}
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+   
+    <link rel="shortcut icon" href=" {% static 'http://placehold.it/64.png/000/fff' %}">
+    <!-- Retina iPad Touch Icon-->
+    
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'http://placehold.it/144.png/000/fff' %}">
+    <!-- Retina iPhone Touch Icon-->
+    
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'http://placehold.it/114.png/000/fff' %}">
+    <!-- Standard iPad Touch Icon-->
+    
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'http://placehold.it/72.png/000/fff' %}">
+    <!-- Standard iPhone Touch Icon-->
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'http://placehold.it/57.png/000/fff' %}">
+
+    <!-- Styles -->
+    
+    <link href="{% static 'css/lib/font-awesome.min.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'css/lib/helper.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body class="bg-primary">
+
+    <div class="unix-login">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="login-content">
+                        <div class="login-logo">
+                            {% if messages %}
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                            {% endif %}
+                            
+                        </div>
+                        <div class="login-form">
+                            <h4>Connexion</h4>
+
+                            <form id="login-form" method="POST" action="">
+                                {% csrf_token %}    
+                                <div class="form-group">
+                                    <label >Nom d'utilisateur</label>
+                                    <input type="text" class="form-control" name="username"  placeholder="Nom d'utilisateur">
+                                </div>
+                                <div class="form-group">
+                                    <label >Mot de passe</label>
+                                    <input type="password" class="form-control" name="password"      placeholder="Mot de passe">
+                                </div>
+
+
+                               
+                                <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Connexion</button>
+
+                                <div class="register-link m-t-15 text-center">
+                                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
