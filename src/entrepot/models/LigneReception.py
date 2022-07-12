@@ -10,3 +10,4 @@ class LigneReception(models.Model):
     qteProd=models.IntegerField
     poids=models.FloatField
     numLot=models.CharField(max_length=100) 
+    dateCreation=models.DateField( auto_now_add=True)

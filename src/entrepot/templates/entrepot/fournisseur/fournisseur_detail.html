@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{%block title %} Fournisseur {%endblock%}
+{%block content %}
+<div class="card">
+    <h5 class="card-header">
+        Détail <a href="{% url 'update_fournisseurs' fournisseur.pk %}"> <i class="ti-pencil"></i> </a>
+            <a href="{% url 'delete_fournisseurs' fournisseur.pk %}"> <i class="ti-trash"></i> </a>
+
+    </h5>
+    <div class="card-body">
+        <div class="col">
+            <div class="row">
+                <strong>Nom</strong> : {{fournisseur.nom}} <br>
+            </div>
+
+            <div class="row">
+                <strong>Contact</strong> : {{fournisseur.contact}} <br>
+            </div>
+
+            <div class="row">
+                <strong>Email</strong> : {{fournisseur.email}} <br>
+            </div>
+
+            <div class="row">
+                <strong>Adresse</strong>{{fournisseur.adresse}} <br>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+{%endblock%}

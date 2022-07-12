@@ -10,3 +10,4 @@ class Expedition(models.Model):
     dateExp=models.DateField()
     qte=models.IntegerField
     poids=models.FloatField
+    dateCreation=models.DateField( auto_now_add=True)

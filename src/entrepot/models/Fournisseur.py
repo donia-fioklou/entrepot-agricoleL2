@@ -6,3 +6,4 @@ class Fournisseur(models.Model):
     contact=models.IntegerField()
     email=models.EmailField( max_length=200)
     adresse=models.CharField(max_length=200)
+    dateCreation=models.DateField(auto_now_add=True)

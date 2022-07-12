@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{%block title %}List fournisseurs {%endblock%}
+
+{%block content %}
+<div class="table-responsive"></div>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col"> Nom </th>
+            <th scope="col">Contact</th>
+            <th scope="col">Email</th>
+            <th scope="col">Adresse</th>
+            <th scope="col"><a href="{% url 'create_fournisseurs' %}"> <i class="ti-plus"></i> </a></th>
+
+          </tr>
+        </thead>
+        <tbody>
+        {% for fournisseur in fournisseur_list %}
+          <tr>
+            
+            <td>{{forloop.counter}}</td>
+            <td><a href="{% url 'detail_fournisseurs' fournisseur.pk %}">{{fournisseur.nom}}</a></td>
+            <td>{{fournisseur.contact}}</td>
+            <td>{{fournisseur.email}}</td>
+            <td>{{fournisseur.adresse}}</td>
+            <td><a href="{% url 'update_fournisseurs' fournisseur.pk %}"> <i class="ti-pencil"></i> </a>
+              <a href="{% url 'delete_fournisseurs' fournisseur.pk %}"> <i class="ti-trash"></i> </a></td>
+
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        {% if fournisseur_list.has_previous %}
+            <a href="{% url 'fournisseurs' %}?page={{fournisseur_list.previous_page_number}}">Précédent</a>
+        {% endif %}
+        
+        <span>
+             page {{fournisseur_list.number}} sur {{fournisseur_list.paginator.num_pages}} 
+        </span>
+
+        {% if fournisseur_list.has_next %}
+        <a href="{% url 'fournisseurs' %}?page={{fournisseur_list.next_page_number}}">Suivant</a>
+        {% endif %}
+
+        <div class="text-right">
+          <a href="{% url 'create_fournisseurs' %}" class="btn btn-primary">Ajouter un fournisseur</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{%endblock%}

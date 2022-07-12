@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'entrepot',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,7 @@ WSGI_APPLICATION = 'projetStage.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'entrepot',
+        'NAME': 'agriculture',
         'USER': 'postgres',
         'PASSWORD': 'Martin47.',
         'HOST':'127.0.0.1',

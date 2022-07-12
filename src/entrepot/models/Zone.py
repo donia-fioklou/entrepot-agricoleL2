@@ -10,3 +10,4 @@ class Zone(models.Model):
     nom=models.CharField(max_length=50)
     reception=models.ManyToManyField(Reception)
     expedition=models.ManyToManyField(Expedition)
+    dateCreation=models.DateField( auto_now_add=True)

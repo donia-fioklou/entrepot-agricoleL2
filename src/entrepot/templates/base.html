@@ -71,7 +71,7 @@
                                     <li><a href="page-login.html">Sortie</a></li>
                                 </ul>
                             </li>
-                            <li><a href="index.html">Fournisseur</a></li>
+                            <li><a href="{% url 'fournisseurs' %}">Fournisseur</a></li>
                             <li><a href="index.html">Client</a></li>
                             <li><a href="index.html">utilisateur</a></li>
                             
@@ -96,7 +96,7 @@
                             <li><a href="ui-alerts.html">Sortie</a></li>
 
                             <li><a href="ui-button.html">Client</a></li>
-                            <li><a href="ui-dropdown.html">Fournisseur</a></li>
+                            <li><a href="{% url 'fournisseurs' %}">Fournisseur</a></li>
 
                         </ul>
                     </li>
@@ -324,9 +324,14 @@
         </div>
     </div>
     
-
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
 
         {%block content %}{%endblock%}
+            </div>
+        </div>
+    </div>
  
 
     <div class="content-wrap">  
