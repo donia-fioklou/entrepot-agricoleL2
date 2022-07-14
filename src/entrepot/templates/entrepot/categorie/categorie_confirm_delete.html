@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{%block title %}Categorie {%endblock%}
+
+    {%block content %}     
+<div class="card">
+    <!--begin::Card body-->
+    <div class="card-body p-0">
+        <!--begin::Heading-->
+        <div class="card-px text-center py-20 my-10">
+            <form method="post">{% csrf_token %}
+                <p>Etes-vous sûr que vous voulez supprimer ? </p>
+                {{ form }}
+                <div class="row">
+                    <div class="col">
+                        <a class="btn btn-secondary" href=" {% url 'detail_categories' categorie.pk %} " role="button">Annuler</a>
+
+                    </div>
+
+                    <div class="col">
+                        <input type="submit" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users" value="confirmer">
+                        
+                    </div>
+                
+                
+                </div>
+        </form>
+           
+     
+            <!--begin::Action-->
+            
+            <!--end::Action-->
+        </div>
+        <!--end::Heading-->
+
+    </div>
+    <!--end::Card body-->
+</div>
+{%endblock%}

@@ -12,6 +12,6 @@ class FournisseurForm (ModelForm):
             'nom': forms.TextInput(attrs={'class':'form-control'}),
             'contact': forms.TextInput(attrs={'class':'form-control'}),
             'email': forms.TextInput(attrs={'class':'form-control'}),
-            'adresse': forms.Textarea(attrs={'class':'form-control'})
+            'adresse': forms.TextInput(attrs={'class':'form-control'}),
         }
     

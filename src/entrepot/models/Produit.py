@@ -8,4 +8,11 @@ class Produit(models.Model):
     reception=models.ManyToManyField(Reception)
     dateCreation=models.DateField( auto_now_add=True)
     
+    def __str__(self):
+        return  self.nomProd
+    
+    class Meta():
+        verbose_name="Produit"
+        
+    
     
