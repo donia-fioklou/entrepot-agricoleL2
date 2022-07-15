@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from entrepot.views.login import login_user
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('',login_user,name="login"),
+    path('admin/', admin.site.urls,name="admin"),
     path("entrepot/", include('django.contrib.auth.urls')),
     path('entrepot/',include('entrepot.urls')),  
 ]

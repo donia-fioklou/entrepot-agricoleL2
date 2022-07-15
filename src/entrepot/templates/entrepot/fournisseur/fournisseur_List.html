@@ -57,56 +57,18 @@
           <!--begin::Content-->
           <div class="px-7 py-5">
             <!--begin::Input group-->
-            <div class="mb-10">
-              <!--begin::Label-->
-              <label class="form-label fs-5 fw-bold mb-3">Month:</label>
-              <!--end::Label-->
-              <!--begin::Input-->
-              <select class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="month">
-                <option></option>
-                <option value="aug">August</option>
-                <option value="sep">September</option>
-                <option value="oct">October</option>
-                <option value="nov">November</option>
-                <option value="dec">December</option>
-              </select>
-              <!--end::Input-->
-            </div>
-            <!--end::Input group-->
-            <!--begin::Input group-->
-            <div class="mb-10">
-              <!--begin::Label-->
-              <label class="form-label fs-5 fw-bold mb-3">Payment Type:</label>
-              <!--end::Label-->
-              <!--begin::Options-->
-              <div class="d-flex flex-column flex-wrap fw-bold" data-kt-customer-table-filter="payment_type">
-                <!--begin::Option-->
-                <label class="form-check form-check-sm form-check-custom form-check-solid mb-3 me-5">
-                  <input class="form-check-input" type="radio" name="payment_type" value="all" checked="checked" />
-                  <span class="form-check-label text-gray-600">All</span>
-                </label>
-                <!--end::Option-->
-                <!--begin::Option-->
-                <label class="form-check form-check-sm form-check-custom form-check-solid mb-3 me-5">
-                  <input class="form-check-input" type="radio" name="payment_type" value="visa" />
-                  <span class="form-check-label text-gray-600">Visa</span>
-                </label>
-                <!--end::Option-->
-                <!--begin::Option-->
-                <label class="form-check form-check-sm form-check-custom form-check-solid mb-3">
-                  <input class="form-check-input" type="radio" name="payment_type" value="mastercard" />
-                  <span class="form-check-label text-gray-600">Mastercard</span>
-                </label>
-                <!--end::Option-->
-                <!--begin::Option-->
-                <label class="form-check form-check-sm form-check-custom form-check-solid">
-                  <input class="form-check-input" type="radio" name="payment_type" value="american_express" />
-                  <span class="form-check-label text-gray-600">American Express</span>
-                </label>
-                <!--end::Option-->
-              </div>
-              <!--end::Options-->
-            </div>
+              <form action="" method="get">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Nom</label>
+                  <input type="email" class="form-control" id="nom" >
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Adresse</label>
+                  <input type="email" class="form-control" id="adresse" >
+                </div>
+
+
+              </form>
             <!--end::Input group-->
             <!--begin::Actions-->
             <div class="d-flex justify-content-end">

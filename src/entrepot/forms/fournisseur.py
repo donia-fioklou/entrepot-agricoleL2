@@ -14,4 +14,5 @@ class FournisseurForm (ModelForm):
             'email': forms.TextInput(attrs={'class':'form-control'}),
             'adresse': forms.TextInput(attrs={'class':'form-control'}),
         }
+
     

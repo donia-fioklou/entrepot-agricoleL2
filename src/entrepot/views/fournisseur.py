@@ -16,6 +16,7 @@ def fournisseur_list_create(request):
     fournisseur_list=Fournisseur.objects.all()
     
     
+    
     paginator= Paginator(fournisseur_list.order_by('-dateCreation'),10)
     
     try:
