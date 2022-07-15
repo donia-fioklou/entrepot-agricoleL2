@@ -5,6 +5,8 @@ from entrepot.models.Produit import Produit
 from django.core.paginator import Paginator,EmptyPage
 from django.views.generic import DetailView,UpdateView,DeleteView
 
+def is_valid_queryparam(param):
+    return param != '' and param is not None
 def produit_list_create(request):
     
     form= ProduitForm(request.POST or None)
@@ -13,6 +15,10 @@ def produit_list_create(request):
 
     selected="fournisseurs"
     produit_list=Produit.objects.all()
+    nomProd=request.GET.get('nomProd')
+    
+    if is_valid_queryparam(nomProd):
+        produit_list=produit_list.filter(nomProd=nomProd)
     
     
     paginator= Paginator(produit_list.order_by('-dateCreation'),10)

@@ -43,12 +43,12 @@
             </g>
           </svg>
         </span>
-        <!--end::Svg Icon-->Filter</button>
+        <!--end::Svg Icon-->Filtre</button>
         <!--begin::Menu 1-->
         <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
           <!--begin::Header-->
           <div class="px-7 py-5">
-            <div class="fs-4 text-dark fw-bolder">Filter Options</div>
+            <div class="fs-4 text-dark fw-bolder">Options de filtrage</div>
           </div>
           <!--end::Header-->
           <!--begin::Separator-->
@@ -60,22 +60,20 @@
               <form action="" method="get">
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Nom</label>
-                  <input type="email" class="form-control" id="nom" >
+                  <input type="search" class="form-control" name="nom" >
                 </div>
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Adresse</label>
-                  <input type="email" class="form-control" id="adresse" >
+                  <input type="search" class="form-control" name="adresse" >
                 </div>
 
-
+                <div class="d-flex justify-content-end">
+                    <input type="reset" class="btn btn-white btn-active-light-primary me-2" value="Annuler">        
+                    <input class="btn btn-primary" type="submit" value="Valider">
+                </div> 
               </form>
-            <!--end::Input group-->
-            <!--begin::Actions-->
-            <div class="d-flex justify-content-end">
-              <button type="reset" class="btn btn-white btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-customer-table-filter="reset">Reset</button>
-              <button type="submit" class="btn btn-primary" data-kt-menu-dismiss="true" data-kt-customer-table-filter="filter">Apply</button>
-            </div>
-            <!--end::Actions-->
+            
+           
           </div>
           <!--end::Content-->
         </div>

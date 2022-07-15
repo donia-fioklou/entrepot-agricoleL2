@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from entrepot.forms.fournisseur import FournisseurForm
@@ -5,6 +6,9 @@ from entrepot.models.Fournisseur import Fournisseur
 from django.core.paginator import Paginator,EmptyPage
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import DetailView,ListView
+
+def is_valid_queryparam(param):
+    return param != '' and param is not None
 
 def fournisseur_list_create(request):
     
@@ -14,6 +18,14 @@ def fournisseur_list_create(request):
 
     selected="fournisseurs"
     fournisseur_list=Fournisseur.objects.all()
+    nom=request.GET.get('nom')
+    adresse=request.GET.get('adresse')
+    
+    if is_valid_queryparam(nom):
+        fournisseur_list=fournisseur_list.filter(nom=nom)
+    elif is_valid_queryparam(adresse):
+        fournisseur_list=fournisseur_list.filter(adresse=adresse)
+        
     
     
     

@@ -5,6 +5,8 @@ from entrepot.models.Categorie import Categorie
 from django.core.paginator import Paginator,EmptyPage
 from django.views.generic import DetailView,UpdateView,DeleteView
 
+def is_valid_queryparam(param):
+    return param != '' and param is not None
 def categorie_list_create(request):
     
     form= CategorieForm(request.POST or None)
@@ -13,6 +15,11 @@ def categorie_list_create(request):
 
     selected="fournisseurs"
     categorie_list=Categorie.objects.all()
+    nom=request.GET.get('nom')
+    
+    if is_valid_queryparam(nom):
+        categorie_list=categorie_list.filter(nom=nom)
+
     
     
     paginator= Paginator(categorie_list.order_by('-dateCreation'),10)
