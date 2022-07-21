@@ -19,7 +19,7 @@ from django.urls import include, path
 from entrepot.views.login import login_user
 
 urlpatterns = [
-    path('',login_user,name="login"),
+    path('accounts/login/',login_user,name="login"),
     path('admin/', admin.site.urls,name="admin"),
     path("entrepot/", include('django.contrib.auth.urls')),
     path('entrepot/',include('entrepot.urls')),  

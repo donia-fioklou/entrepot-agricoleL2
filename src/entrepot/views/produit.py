@@ -4,9 +4,13 @@ from entrepot.forms.produit import ProduitForm
 from entrepot.models.Produit import Produit
 from django.core.paginator import Paginator,EmptyPage
 from django.views.generic import DetailView,UpdateView,DeleteView
+from django.contrib.auth.decorators import login_required
+from projetStage.settings import LOGIN_REDIRECT_URL
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def is_valid_queryparam(param):
     return param != '' and param is not None
+@login_required
 def produit_list_create(request):
     
     form= ProduitForm(request.POST or None)
@@ -32,7 +36,7 @@ def produit_list_create(request):
         produit_list=paginator.page(paginator.num_pages())
     return render(request,"entrepot/produit/produit_list.html",locals())
 
-class UpdateProduit(UpdateView):
+class UpdateProduit(LoginRequiredMixin,UpdateView):
     model=Produit
     form_class=ProduitForm
     template_name="entrepot/produit/produit_form.html"
@@ -40,13 +44,13 @@ class UpdateProduit(UpdateView):
     def get_success_url(self):
         return reverse_lazy("detail_produits",kwargs={"pk":self.object.pk})
 
-class ProduitDeleteView(DeleteView):
+class ProduitDeleteView(LoginRequiredMixin,DeleteView):
     model = Produit
     template_name="entrepot/produit/produit_confirm_delete.html"
     
     def get_success_url(self):
         return reverse_lazy("produits")
 
-class ProduitDetail(DetailView):
+class ProduitDetail(LoginRequiredMixin,DetailView):
     model = Produit
     template_name = "entrepot/produit/produit_detail.html"

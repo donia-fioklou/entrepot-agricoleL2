@@ -88,7 +88,7 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Menu-->
 							<div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
 								<div class="menu-item">
-									<a class="menu-link active" href="index.html">
+									<a class="menu-link active" href="{% url 'entrepots' %}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -110,7 +110,7 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 
 								<div class="menu-item">
-									<a class="menu-link active" href="index.html">
+									<a class="menu-link active" href="{% url 'zones' %}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -189,7 +189,7 @@ License: For each use you must have a valid license purchased only from above li
 
 								
 								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-									<span class="menu-link">
+									<span class="menu-link active">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -228,10 +228,10 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 
 								
-								<div class="menu-item">
-									<a class="menu-link active" href="">
+								<div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
+									<span class="menu-link active">
 										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
+											<!--begin::Svg Icon | path: icons/duotone/General/Shield-protected.svg-->
 											<span class="svg-icon svg-icon-2">
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -241,11 +241,54 @@ License: For each use you must have a valid license purchased only from above li
 													</g>
 												</svg>
 											</span>
-											<!--end::Svg Icon-->										
-
+											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title"> Gestion utilisateur</span>
-									</a>
+										<span class="menu-title">Gestion utilisateur</span>
+										<span class="menu-arrow"></span>
+									</span>
+									<div class="menu-sub menu-sub-accordion">
+										{% load i18n %}
+
+										{% if app_list %}
+										{% for app in app_list %}
+											<div class="app-{{ app.app_label }} module{% if app.app_url in request.path|urlencode %} current-app{% endif %}">
+											<table>
+												
+												{% for model in app.models %}
+												<tr class="model-{{ model.object_name|lower }}{% if model.admin_url in request.path|urlencode %} current-model{% endif %}">
+													{% if model.admin_url %}
+													<div class="menu-item">
+														<a class="menu-link" href="{{ model.admin_url }}"{% if model.admin_url in request.path|urlencode %} aria-current="page"{% endif %}>{{ model.name }}	
+														</a>
+													</div>
+													
+													{% else %}
+													<th scope="row">{{ model.name }}</th>
+													{% endif %}
+
+													
+
+													{% if model.admin_url and show_changelinks %}
+													{% if model.view_only %}
+														<td><a href="{{ model.admin_url }}" class="viewlink">{% translate 'View' %}</a></td>
+													{% else %}
+														<td><a href="{{ model.admin_url }}" class="changelink">{% translate 'Change' %}</a></td>
+													{% endif %}
+													{% elif show_changelinks %}
+													<td></td>
+													{% endif %}
+												</tr>
+												{% endfor %}
+											</table>
+											</div>
+										{% endfor %}
+										{% else %}
+										<p>{% translate 'You don’t have permission to view or edit anything.' %}</p>
+										{% endif %}
+										
+										
+
+									</div>
 								</div>
 								
 								
@@ -2070,11 +2113,7 @@ License: For each use you must have a valid license purchased only from above li
                                 {% endif %}
                             
                                 <div class="main" id="main">
-                                  {% if not is_popup and is_nav_sidebar_enabled %}
-                                    {% block nav-sidebar %}
-                                      {% include "admin/nav_sidebar.html" %}
-                                    {% endblock %}
-                                  {% endif %}
+                                  
                                   <div class="content">
                                     {% block messages %}
                                       {% if messages %}
@@ -2110,7 +2149,8 @@ License: For each use you must have a valid license purchased only from above li
 					</div>
 					<!--end::Content-->
                     
-					<!--begin::
+					<!--begin::-->
+					
 					<!--end::Footer-->
 				</div>
 				<!--end::Wrapper-->

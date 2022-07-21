@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{%block title %}List zones {%endblock%}
+
+    {%block content %} 
+    {% if object %}
+        <h3>Modification</h3>
+    {% else %}
+        <h3>Création</h3>
+    {% endif %}
+    <div class="row">
+        <div class="col-lg-6">
+    <form method="post" action="">
+        {% csrf_token %}
+        
+        {{form.as_p}}
+        <div class="row" >
+            <div class="col">
+            {% if object %}
+                <a class="btn btn-secondary" href=" {% url 'detail_zones' zone.pk %} " role="button">Annuler</a>
+            {%else%}
+                <a class="btn btn-secondary" href=" {% url 'zones' %} " role="button">Annuler</a>
+            {%endif%}
+            </div>
+
+            <div class="col">
+                <input class="btn btn-primary" type="submit" value="Valider">
+            </div>
+        </div>
+    </form>
+        </div>
+    </div>
+
+
+
+
+{%endblock%}

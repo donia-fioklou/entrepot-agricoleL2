@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 
-{%block soustitre %} Fournisseur {%endblock%}
+{%block soustitre %} Zone {%endblock%}
 
 {%block content %}
   
@@ -63,8 +63,8 @@
                   <input type="search" class="form-control" name="nom" >
                 </div>
                 <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Adresse</label>
-                  <input type="search" class="form-control" name="adresse" >
+                  <label for="exampleFormControlInput1" class="form-label">Quantité maximale</label>
+                  <input type="search" class="form-control" name="qteMax" >
                 </div>
 
                 <div class="d-flex justify-content-end">
@@ -90,7 +90,7 @@
               <rect fill="#000000" opacity="0.5" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)" x="4" y="11" width="16" height="2" rx="1" />
             </svg>
           </span>
-          Ajouter un fournisseur</button>
+          Ajouter un zone</button>
         <!--end::Add customer-->
       </div>
       <!--end::Toolbar-->
@@ -116,9 +116,7 @@
 
           <th class="min-w-125px">#</th>
           <th class="min-w-125px">Nom</th>
-          <th class="min-w-125px">Contact</th>
-          <th class="min-w-125px">Email </th>
-          <th class="min-w-125px">Adresse</th>
+          <th class="min-w-125px">Quantité maximale</th>
           <th class="text-end min-w-70px">Actions</th>
         </tr>
         <!--end::Table row-->
@@ -126,14 +124,13 @@
       <!--end::Table head-->
       <!--begin::Table body-->
       <tbody class="fw-bold text-gray-600">
-        {% for fournisseur in fournisseur_list %}
+        {% for zone in zone_list %}
         <tr>
           
           <td>{{forloop.counter}}</td>
-          <td><a href="{% url 'detail_fournisseurs' fournisseur.pk %}">{{fournisseur.nom}}</a></td>
-          <td>{{fournisseur.contact}}</td>
-          <td>{{fournisseur.email}}</td>
-          <td>{{fournisseur.adresse}}</td>
+          <td><a href="{% url 'detail_zones' zone.pk %}">{{zone.nom}}</a></td>
+          <td>{{zone.qteMax}}</td>
+          
           
           <td class="text-end">
             <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">Actions
@@ -149,11 +146,11 @@
               <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                 
                 <div class="menu-item px-3">
-                  <a href="{% url 'update_fournisseurs' fournisseur.pk %}" class="menu-link px-3">Modifier</a>
+                  <a href="{% url 'update_zones' zone.pk %}" class="menu-link px-3">Modifier</a>
                 </div>
 
                 <div class="menu-item px-3">
-                  <a href="{% url 'delete_fournisseurs' fournisseur.pk %}" class="menu-link px-3">Supprimer</a>
+                  <a href="{% url 'delete_zones' zone.pk %}" class="menu-link px-3">Supprimer</a>
                 </div>
                 
               </div>
@@ -166,16 +163,16 @@
     </table>		
 
     <div>
-      {% if fournisseur_list.has_previous %}
-          <a href="{% url 'fournisseurs' %}?page={{fournisseur_list.previous_page_number}}">Précédent</a>
+      {% if zone_list.has_previous %}
+          <a href="{% url 'zones' %}?page={{zone_list.previous_page_number}}">Précédent</a>
       {% endif %}
       
       <span>
-           page {{fournisseur_list.number}} sur {{fournisseur_list.paginator.num_pages}} 
+           page {{zone_list.number}} sur {{zone_list.paginator.num_pages}} 
       </span>
 
-      {% if fournisseur_list.has_next %}
-      <a href="{% url 'fournisseurs' %}?page={{fournisseur_list.next_page_number}}">Suivant</a>
+      {% if zone_list.has_next %}
+      <a href="{% url 'zones' %}?page={{zone_list.next_page_number}}">Suivant</a>
       {% endif %}
   </div>
   </div>
@@ -215,9 +212,9 @@
                   <div class="row" >
                         <div class="col">
                             {% if object %}
-                                <a class="btn btn-secondary" href=" {% url 'detail_fournisseurs' fournisseur.pk %} " role="button">Annuler</a>
+                                <a class="btn btn-secondary" href=" {% url 'detail_zones' zone.pk %} " role="button">Annuler</a>
                             {%else%}
-                                <a class="btn btn-secondary" href=" {% url 'fournisseurs' %} " role="button">Annuler</a>
+                                <a class="btn btn-secondary" href=" {% url 'zones' %} " role="button">Annuler</a>
                             {%endif%}
                         </div>
 
