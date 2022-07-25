@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{%block title %}Categorie {%endblock%}
+{%block title %}Produit {%endblock%}
 
     {%block content %}     
 <div class="card">
@@ -12,7 +12,9 @@
                 {{ form }}
                 <div class="row">
                     <div class="col">
-                        <a href="{% url 'categories' %}" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">Annuler</a>
+                        <a class="btn btn-secondary" href=" {% url 'detail_produits' produit.pk %} " role="button">Annuler</a>
+
+
                     </div>
 
                     <div class="col">

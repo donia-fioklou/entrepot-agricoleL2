@@ -1,8 +1,6 @@
 from django.db import models
-
 from entrepot.models.Entrepot import Entrepot
-from entrepot.models.Expedition import Expedition
-from entrepot.models.Reception import Reception
+
 
 
 class Zone(models.Model):
@@ -10,8 +8,6 @@ class Zone(models.Model):
     nom=models.CharField(max_length=50)
     qteMax=models.IntegerField()
     qteActu=models.IntegerField( blank=True, null=True)
-    reception=models.ManyToManyField(Reception)
-    expedition=models.ManyToManyField(Expedition)
     dateCreation=models.DateField( auto_now_add=True)
     
     def __str__(self):

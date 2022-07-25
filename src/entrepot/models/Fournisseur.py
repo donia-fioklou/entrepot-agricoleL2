@@ -7,3 +7,9 @@ class Fournisseur(models.Model):
     email=models.EmailField( max_length=200)
     adresse=models.CharField(max_length=200)
     dateCreation=models.DateField(auto_now_add=True)
+    
+    def __str__(self):
+        return  self.nom
+    
+    class Meta():
+        verbose_name="Produit"

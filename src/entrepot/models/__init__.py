@@ -7,3 +7,4 @@ from .Reception import Reception
 from .Zone import Zone
 from .Produit import Produit
 from .LigneReception import LigneReception 
+from .LigneConteneur import LigneConteneur
