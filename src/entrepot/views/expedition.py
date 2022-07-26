@@ -1,5 +1,7 @@
 
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from entrepot.forms.expedition import ExpeditionForm
 from entrepot.models import Expedition, Zone
@@ -7,6 +9,8 @@ from entrepot.models.Conteneur import Conteneur
 from entrepot.models.LigneReception import LigneReception
 from entrepot.models.LigneConteneur import LigneConteneur
 from django.core.paginator import Paginator,EmptyPage
+
+from entrepot.views import conteneur
 
 
 def expedition_list_create(request):
@@ -46,9 +50,19 @@ def expedition_list_create(request):
 
 def expeditionDetail(request,id):
     expedition=Expedition.objects.get(id=id)
-    zone=Zone.objects.filter(ligneReception_expedier=True).filter(ligneConteneur_conn)
-    listZone=[]
-    for element in zone:
-        listZone.append(element.nom)
-    chainZone=",".join(listZone)
+
+    
+
+    
+
     return render(request,"entrepot/expedition/expedition_detail.html",locals())
+
+def expeditionDelete(request,id):
+    if request.method =="POST":
+        expedition=Expedition.objects.get(id=id)
+        ligneConteneur=LigneConteneur.objects.filter(conteneur__expedition__id=id)
+        for i in ligneConteneur:
+            i.delete()
+        expedition.delete()
+        return HttpResponseRedirect(reverse("expedition"))
+    return render(request,"entrepot/expedition/expedition_confirm_delete.html",locals())

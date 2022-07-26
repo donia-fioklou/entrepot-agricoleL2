@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from entrepot.forms.addZone import AddZone
+from entrepot.forms.editReception import LigneRecepForm, RecepForm
 from entrepot.forms.produit import ProduitForm
 from entrepot.models.Fournisseur import Fournisseur
 from entrepot.models.LigneReception import LigneReception
@@ -52,7 +53,24 @@ def reception_list_create(request):
 def receptionUpdate(request,id):
     reception=Reception.objects.get(id=id)
     ligneReception=LigneReception.objects.filter(reception=id)
-    formRecep=ReceptionForm(request.POST or None,isinstance=[Reception,LigneReception])
+    a=ligneReception.first()
+    form1=RecepForm(request.POST or None,instance=reception)
+    form2=LigneRecepForm(request.POST or None,instance=a)
+    if request.method=='POST' and form1.is_valid() and form2.is_valid():
+        form1.save()
+        qteProd=request.POST.get('qteProd')
+        numLot=request.POST.get('numLot')
+        for i in ligneReception:
+            i.qteProd=qteProd
+            i.save()
+            i.numLot=numLot
+            i.save()
+        return HttpResponseRedirect(reverse("receptions"))       
+    
+    
+    return render(request,"entrepot/reception/reception_form.html",locals())
+    
+
     
 
 def ajouterZone(request,id):
@@ -74,6 +92,18 @@ def ajouterZone(request,id):
         return HttpResponseRedirect(reverse("receptions"))
     return render(request,"entrepot/reception/ajouter_zone.html",locals())
 
+def retirerZone(request,id):
+    form=AddZone(request.POST or None)
+    if request.method=='POST' and form.is_valid():
+        ligneReception=LigneReception.objects.filter(reception=id)
+        zo=request.POST.getlist('zone')
+        for i in ligneReception:
+            if i.zone in zo:
+                i.delete()
+        return HttpResponseRedirect(reverse("receptions"))
+    return render(request,"entrepot/reception/ajouter_zone.html",locals())
+    
+
 def receptionDelete(request,id):
         if request.method =="POST":
             ligneReception=LigneReception.objects.filter(reception=id)
@@ -91,6 +121,7 @@ def receptionDetail(request,id):
         listZone.append(element.nom)
     chainZone=",".join(listZone)
     return render(request,"entrepot/reception/reception_detail.html",locals())
+
 
 
 

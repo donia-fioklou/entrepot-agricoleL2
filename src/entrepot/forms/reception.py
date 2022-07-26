@@ -16,4 +16,5 @@ class ReceptionForm(forms.Form):
     numLot=forms.CharField(max_length=30,widget=forms.TextInput(attrs={'class':'form-control'}))
     zone=forms.ModelMultipleChoiceField(queryset=Zone.objects.all(), widget = forms.SelectMultiple(attrs={'class':'form-control'}))
     
-        
+
+            

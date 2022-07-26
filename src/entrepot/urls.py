@@ -4,7 +4,7 @@ from entrepot.views.admin import admin
 from entrepot.views.categorie import CategorieDeleteView, CategorieDetail, UpdateCategorie, categorie_list_create
 from entrepot.views.conteneur import ConteneurDeleteView, ConteneurDetail, UpdateConteneur, conteneur_list_create
 from entrepot.views.entrepot import EntrepotDeleteView, EntrepotDetail, UpdateEntrepot, entrepot_list_create
-from entrepot.views.expedition import expedition_list_create, expeditionDetail
+from entrepot.views.expedition import expedition_list_create, expeditionDelete, expeditionDetail
 from entrepot.views.fournisseur import  FournisseurDeleteView, FournisseurDetail, UpdateFournisseur,  fournisseur_list_create
 from entrepot.views.indexView import IndexView
 
@@ -12,7 +12,7 @@ from entrepot.views.indexView import IndexView
 
 from entrepot.views.login import login_user
 from entrepot.views.produit import ProduitDeleteView, ProduitDetail, UpdateProduit, produit_list_create
-from entrepot.views.reception import ajouterZone, reception_list_create, receptionDelete, receptionDetail
+from entrepot.views.reception import ajouterZone, reception_list_create, receptionDelete, receptionDetail, receptionUpdate, retirerZone
 from entrepot.views.zone import UpdateZone, ZoneDeleteView, ZoneDetail, zone_list_create
 
 
@@ -29,6 +29,7 @@ urlpatterns = [
     path('receptions/', reception_list_create,name="receptions"),
     path('conteneurs/', conteneur_list_create,name="conteneurs"),
     path('receptions/ajouterZone/<int:id>', ajouterZone,name="ajouterZone"),
+    path('receptions/retirerZone/<int:id>', retirerZone,name="retirerZone"),
     path('expeditions/', expedition_list_create,name="expeditions"),
     
     path('fournisseurs/<int:pk>', FournisseurDetail.as_view(),name="detail_fournisseurs"),
@@ -48,6 +49,7 @@ urlpatterns = [
     path('zones/delete/<int:pk>', ZoneDeleteView.as_view(),name="delete_zones"),
     path('conteneurs/delete/<int:pk>',ConteneurDeleteView.as_view() ,name="delete_conteneurs"),
     path('receptions/delete/<int:id>',receptionDelete ,name="delete_receptions"),
+    path('expedition/delete/<int:id>',expeditionDelete ,name="delete_expedition"),
     
     
     path('fournisseurs/update/<int:pk>/',UpdateFournisseur.as_view(),name="update_fournisseurs"),
@@ -56,4 +58,5 @@ urlpatterns = [
     path('entrepot/update/<int:pk>/',UpdateEntrepot.as_view(),name="update_entrepots"),
     path('zone/update/<int:pk>/',UpdateZone.as_view(),name="update_zones"),
     path('conteneur/update/<int:pk>/',UpdateConteneur.as_view(),name="update_conteneurs"),
+    path('reception/update/<int:id>/',receptionUpdate,name="update_reception"),
 ]
