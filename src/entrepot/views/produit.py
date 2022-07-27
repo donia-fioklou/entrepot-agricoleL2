@@ -17,7 +17,7 @@ def produit_list_create(request):
     if request.method=='POST' and form.is_valid():
         form.save()
 
-    selected="fournisseurs"
+    
     produit_list=Produit.objects.all()
     nomProd=request.GET.get('nomProd')
     

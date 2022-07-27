@@ -15,6 +15,9 @@ from django.core.paginator import Paginator,EmptyPage
 
 from entrepot.models.Zone import Zone
 
+def is_valid_queryparam(param):
+    return param != '' and param is not None
+
 def reception_list_create(request):
     
     form= ReceptionForm(request.POST or None)
@@ -36,9 +39,14 @@ def reception_list_create(request):
         for element in zo:
             zone=Zone.objects.get(id=element)
             ligneReception=LigneReception.objects.create(numLot=numLot,reception=reception,qteProd=qteProd,zone=zone,)
-        form=ReceptionForm()
         
     listReception=Reception.objects.all()
+    nomRecep=request.GET.get('nomRecep')
+    
+    if is_valid_queryparam(nomRecep):
+        listReception=listReception.filter(nomRecep=nomRecep)
+        
+    
     paginator= Paginator(listReception.order_by('-dateCreation'),10)
     try:
         page= request.GET.get("page")
@@ -94,14 +102,14 @@ def ajouterZone(request,id):
 
 def retirerZone(request,id):
     form=AddZone(request.POST or None)
-    if request.method=='POST' and form.is_valid():
-        ligneReception=LigneReception.objects.filter(reception=id)
+    if request.method=="POST" and form.is_valid():
         zo=request.POST.getlist('zone')
+        ligneReception=LigneReception.objects.filter(reception=id)
         for i in ligneReception:
             if i.zone in zo:
                 i.delete()
         return HttpResponseRedirect(reverse("receptions"))
-    return render(request,"entrepot/reception/ajouter_zone.html",locals())
+    return render(request,"entrepot/reception/retirer_zone.html",locals())
     
 
 def receptionDelete(request,id):
