@@ -4,6 +4,7 @@
 {%block soustitre %} Réception {%endblock%}
 
 {%block content %}
+
   
 <div class="card">
   <!--begin::Card header-->
@@ -126,7 +127,10 @@
                 <div class="menu-item px-3">
                   <a href="{% url 'ajouterZone' reception.id  %}" class="menu-link px-3">Attribuer une zone</a>
                 </div>
-
+                
+                <div class="menu-item px-3">
+                  <a href="{% url 'retirerZone' reception.id  %}" class="menu-link px-3">Retirer une zone</a>
+                </div>
                 
                   <div class="menu-item px-3">
                     <a href="{% url 'update_reception' reception.id %}" class="menu-link px-3">Modifier</a>

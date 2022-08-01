@@ -3,6 +3,7 @@ from django.urls import include, path
 from entrepot.views.admin import admin
 from entrepot.views.categorie import CategorieDeleteView, CategorieDetail, UpdateCategorie, categorie_list_create
 from entrepot.views.conteneur import ConteneurDeleteView, ConteneurDetail, UpdateConteneur, conteneur_list_create
+from entrepot.views.dashboard import dashbord
 from entrepot.views.entrepot import EntrepotDeleteView, EntrepotDetail, UpdateEntrepot, entrepot_list_create
 from entrepot.views.expedition import expedition_list_create, expeditionDelete, expeditionDetail
 from entrepot.views.fournisseur import  FournisseurDeleteView, FournisseurDetail, UpdateFournisseur,  fournisseur_list_create
@@ -12,13 +13,14 @@ from entrepot.views.indexView import IndexView
 
 from entrepot.views.login import login_user
 from entrepot.views.produit import ProduitDeleteView, ProduitDetail, UpdateProduit, produit_list_create
-from entrepot.views.reception import ajouterZone, reception_list_create, receptionDelete, receptionDetail, receptionUpdate, retirerZone
+from entrepot.views.reception import ajouterZone,reception_list_create, receptionDelete, receptionDetail, receptionUpdate, retirerZone
 from entrepot.views.zone import UpdateZone, ZoneDeleteView, ZoneDetail, zone_list_create
 
 
 urlpatterns = [
     path('admin/', admin ,name="admin"),
-    path('accounts/login/',login_user,name="login"),
+    path('',login_user,name="login"),
+    path('dashboard',dashbord,name="dashboard"),
     
     #path('',IndexView.as_view(),name='home'),
     path('fournisseurs/', fournisseur_list_create,name="fournisseurs"),

@@ -13,7 +13,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def is_valid_queryparam(param):
     return param != '' and param is not None
 @login_required
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['admin','quai'])
 def zone_list_create(request):
     
     form= ZoneForm(request.POST or None)

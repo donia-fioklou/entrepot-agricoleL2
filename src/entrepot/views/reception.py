@@ -1,8 +1,10 @@
 
 from ast import For, NotIn
+from urllib import request
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
+from entrepot.decorators import allowed_users
 from entrepot.forms.addZone import AddZone
 from entrepot.forms.editReception import LigneRecepForm, RecepForm
 from entrepot.forms.produit import ProduitForm
@@ -12,12 +14,18 @@ from entrepot.models.Produit import Produit
 from entrepot.models.Reception import Reception
 from entrepot.forms.reception import ReceptionForm
 from django.core.paginator import Paginator,EmptyPage
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from entrepot.models.Zone import Zone
+
+
 
 def is_valid_queryparam(param):
     return param != '' and param is not None
 
+@login_required
+@allowed_users(allowed_roles=['quai','admin'])
 def reception_list_create(request):
     
     form= ReceptionForm(request.POST or None)
@@ -39,7 +47,10 @@ def reception_list_create(request):
         for element in zo:
             zone=Zone.objects.get(id=element)
             ligneReception=LigneReception.objects.create(numLot=numLot,reception=reception,qteProd=qteProd,zone=zone,)
-        
+        messages.success(request,"Enregistrer avec success") 
+    else:   
+        messages.error(request,"Désolé, vous n'avez pas réussie l'enregistrement, réessayer")
+          
     listReception=Reception.objects.all()
     nomRecep=request.GET.get('nomRecep')
     
@@ -58,6 +69,8 @@ def reception_list_create(request):
  
     return render(request,"entrepot/reception/reception_list.html",locals())
 
+@login_required
+@allowed_users(allowed_roles=['quai'])
 def receptionUpdate(request,id):
     reception=Reception.objects.get(id=id)
     ligneReception=LigneReception.objects.filter(reception=id)
@@ -80,7 +93,8 @@ def receptionUpdate(request,id):
     
 
     
-
+@login_required
+@allowed_users(allowed_roles=['quai'])
 def ajouterZone(request,id):
     form=AddZone(request.POST or None)
     if request.method=='POST' and form.is_valid():
@@ -100,18 +114,22 @@ def ajouterZone(request,id):
         return HttpResponseRedirect(reverse("receptions"))
     return render(request,"entrepot/reception/ajouter_zone.html",locals())
 
+@login_required
+@allowed_users(allowed_roles=['quai','admin'])
 def retirerZone(request,id):
     form=AddZone(request.POST or None)
     if request.method=="POST" and form.is_valid():
         zo=request.POST.getlist('zone')
+        
         ligneReception=LigneReception.objects.filter(reception=id)
         for i in ligneReception:
-            if i.zone in zo:
+            if i.zone == zo:
                 i.delete()
         return HttpResponseRedirect(reverse("receptions"))
     return render(request,"entrepot/reception/retirer_zone.html",locals())
     
-
+@login_required
+@allowed_users(allowed_roles=['quai','admin'])
 def receptionDelete(request,id):
         if request.method =="POST":
             ligneReception=LigneReception.objects.filter(reception=id)
@@ -120,6 +138,9 @@ def receptionDelete(request,id):
             reception=Reception.objects.get(id=id).delete()
             return HttpResponseRedirect(reverse("receptions"))
         return render(request,"entrepot/reception/reception_confirm_delete.html",locals())
+
+@login_required
+@allowed_users(allowed_roles=['quai','admin'])
 
 def receptionDetail(request,id):
     reception=Reception.objects.get(id=id)

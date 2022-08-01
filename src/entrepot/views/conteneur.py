@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from entrepot.decorators import allowed_users
 from entrepot.forms.conteneur import ConteneurForm
 from entrepot.models.Conteneur import Conteneur
 from django.core.paginator import Paginator,EmptyPage
@@ -11,6 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def is_valid_queryparam(param):
     return param != '' and param is not None
 @login_required
+@allowed_users(allowed_roles=['admin'])
 def conteneur_list_create(request):
     
     form= ConteneurForm(request.POST or None)

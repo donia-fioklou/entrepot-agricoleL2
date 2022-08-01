@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from entrepot.decorators import allowed_users
 from entrepot.forms.categorie import CategorieForm
 from entrepot.models.Categorie import Categorie
 from django.core.paginator import Paginator,EmptyPage
@@ -10,7 +11,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 def is_valid_queryparam(param):
     return param != '' and param is not None
+
 @login_required
+@allowed_users(allowed_roles=['admin'])
 def categorie_list_create(request):
     
     form= CategorieForm(request.POST or None)

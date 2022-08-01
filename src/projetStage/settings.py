@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from email import message
 import os
 from pathlib import Path
 
@@ -131,3 +132,11 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL='base'
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS={
+    messages.DEBUG:'alert-info',
+    messages.INFO:'alert-info',
+    messages.SUCCESS:'alert-success',
+    messages.ERROR:'alert-danger',
+    messages.WARNING:'alert-warning',
+}

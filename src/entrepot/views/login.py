@@ -9,7 +9,7 @@ def login_user(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("produits")
+                return redirect("receptions")
             else:
                 messages.success(request,("nom d'utilisateur ou mot de passe incorrecte"))
                 return redirect('login')

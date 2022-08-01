@@ -2,6 +2,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from entrepot.decorators import allowed_users
 
 from entrepot.forms.expedition import ExpeditionForm
 from entrepot.models import Expedition, Zone
@@ -9,11 +10,13 @@ from entrepot.models.Conteneur import Conteneur
 from entrepot.models.LigneReception import LigneReception
 from entrepot.models.LigneConteneur import LigneConteneur
 from django.core.paginator import Paginator,EmptyPage
-
+from django.contrib.auth.decorators import login_required
 from entrepot.views import conteneur
 
 def is_valid_queryparam(param):
     return param != '' and param is not None
+@login_required
+@allowed_users(allowed_roles=['quai','admin'])
 def expedition_list_create(request):
     form= ExpeditionForm(request.POST or None)
     if request.method=='POST' and form.is_valid():
