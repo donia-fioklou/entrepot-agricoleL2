@@ -12,6 +12,7 @@ from entrepot.models.LigneConteneur import LigneConteneur
 from django.core.paginator import Paginator,EmptyPage
 from django.contrib.auth.decorators import login_required
 from entrepot.views import conteneur
+from django.contrib import messages
 
 def is_valid_queryparam(param):
     return param != '' and param is not None
@@ -19,21 +20,25 @@ def is_valid_queryparam(param):
 @allowed_users(allowed_roles=['quai','admin'])
 def expedition_list_create(request):
     form= ExpeditionForm(request.POST or None)
-    if request.method=='POST' and form.is_valid():
-        #expeLast=Expedition.objects.last()
-        #nom='E0{}'.format(expeLast.values()['id']+1)
-        nom=request.POST.get('nom')
-        date=request.POST.get('date')
-        numCon=request.POST.get('numCont')
-        ligneReception=request.POST.getlist('ligneReception')
-        conteneur=Conteneur.objects.get(id=numCon)
-        expedition=Expedition.objects.create(conteneur=conteneur,nomExp=nom,dateExp=date)
-        exp=Expedition.objects.last()
-        for i in ligneReception:
-            ligneReception=LigneReception.objects.get(id=i)
-            ligneReception.expedier=True
-            ligneReception.save()
-            ligneConteneur=LigneConteneur.objects.create(ligneReception=ligneReception,conteneur=conteneur,expedition=exp)
+    if request.method=='POST' :
+        if form.is_valid():
+            #expeLast=Expedition.objects.last()
+            #nom='E0{}'.format(expeLast.values()['id']+1)
+            nom=request.POST.get('nom')
+            date=request.POST.get('date')
+            numCon=request.POST.get('numCont')
+            ligneReception=request.POST.getlist('ligneReception')
+            conteneur=Conteneur.objects.get(id=numCon)
+            expedition=Expedition.objects.create(conteneur=conteneur,nomExp=nom,dateExp=date)
+            exp=Expedition.objects.last()
+            for i in ligneReception:
+                ligneReception=LigneReception.objects.get(id=i)
+                ligneReception.expedier=True
+                ligneReception.save()
+                ligneConteneur=LigneConteneur.objects.create(ligneReception=ligneReception,conteneur=conteneur,expedition=exp)
+            messages.success(request,"Enregistrer avec success") 
+        else:
+            messages.error(request,"Désolé, vous n'avez pas réussie l'enregistrement, réessayer")   
             
     listExpedition=Expedition.objects.all()
     nomExp=request.GET.get('nomExp')

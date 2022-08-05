@@ -8,10 +8,16 @@ from entrepot.models.Conteneur import Conteneur
 class ConteneurForm (ModelForm):
     class Meta:
         model=Conteneur
-        fields=("numCon",)
+        fields=("IdProprietaire","numCon","typeCon")
         labels={
-            "numCon":'Numéro',
+            
+            "IdProprietaire":"Id proprietaire",
+            "numCon":'Numéro conteneur',
+            "typeCon":"Type du conteneur"
+            
         }
         widgets={
+            'IdProprietaire': forms.TextInput(attrs={'class':'form-control'}),
             'numCon': forms.TextInput(attrs={'class':'form-control'}),
+            'typeCon':forms.TextInput(attrs={'class':'form-control'}),
         }

@@ -8,9 +8,45 @@
 <div class="card card-xl-stretch mb-xl-8">
 	<!--begin::Header-->
 	<div class="card-header border-0 pt-5">
+		<div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
+			<!--begin::Filter-->
+			<button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
+			<!--begin::Svg Icon | path: icons/duotone/Text/Filter.svg-->
+			<span class="svg-icon svg-icon-2">
+			  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+				  <rect x="0" y="0" width="24" height="24" />
+				  <path d="M5,4 L19,4 C19.2761424,4 19.5,4.22385763 19.5,4.5 C19.5,4.60818511 19.4649111,4.71345191 19.4,4.8 L14,12 L14,20.190983 C14,20.4671254 13.7761424,20.690983 13.5,20.690983 C13.4223775,20.690983 13.3458209,20.6729105 13.2763932,20.6381966 L10,19 L10,12 L4.6,4.8 C4.43431458,4.5790861 4.4790861,4.26568542 4.7,4.1 C4.78654809,4.03508894 4.89181489,4 5,4 Z" fill="#000000" />
+				</g>
+			  </svg>
+			</span>
+			<!--end::Svg Icon-->Filtre</button>
+			<!--begin::Menu 1-->
+			<div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
+			  <!--begin::Header-->
+			  <div class="px-7 py-5">
+				<div class="fs-4 text-dark fw-bolder"> Options de filtrage</div>
+			  </div>
+			  <!--end::Header-->
+			  <!--begin::Separator-->
+			  <div class="separator border-gray-200"></div>
+			  <!--end::Separator-->
+			  <!--begin::Content-->
+			  <div class="px-7 py-5">
+				<form action="" method="get">
+					{{form}}
+					<div class="d-flex justify-content-end">
+						<input type="reset" class="btn btn-white btn-active-light-primary me-2" value="Annuler">        
+						<input class="btn btn-primary" type="submit" value="Valider">
+					</div>
+				</form>
+			  </div>
+			  <!--end::Content-->
+			</div>
+		</div>
 		<!--begin::Title-->
 		<h3 class="card-title align-items-start flex-column">
-			<span class="card-label fw-bolder fs-3 mb-1">Statistique des Expéditions</span>
+			<span class="card-label fw-bolder fs-3 mb-1">Statistique des Réceptions</span>
 			<span class="text-muted fw-bold fs-7"> </span>
 		</h3>
 		<!--end::Title-->
@@ -133,9 +169,10 @@
 <div class="card card-xl-stretch mb-xl-8">
 	<!--begin::Header-->
 	<div class="card-header border-0 pt-5">
+		 
 		<!--begin::Title-->
 		<h3 class="card-title align-items-start flex-column">
-			<span class="card-label fw-bolder fs-3 mb-1">Statistique des Réceptions</span>
+			<span class="card-label fw-bolder fs-3 mb-1">Statistique des Expéditions</span>
 			<span class="text-muted fw-bold fs-7"> </span>
 		</h3>
 		<!--end::Title-->

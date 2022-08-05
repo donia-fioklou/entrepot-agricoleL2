@@ -29,27 +29,28 @@ def is_valid_queryparam(param):
 def reception_list_create(request):
     
     form= ReceptionForm(request.POST or None)
-    if request.method=='POST' and form.is_valid():
-        nom=request.POST.get('nom')
-        date=request.POST.get('date')
-        
-        prod=request.POST.get('produit')
-        produit=Produit.objects.get(id=prod)
-        
-        four=request.POST.get('fournisseur')
-        fournisseur=Fournisseur.objects.get(id=four)
-        
-        qteProd=request.POST.get('qteProd')
-        numLot=request.POST.get('numLot')
-        
-        reception=Reception.objects.create(nomRecep=nom,dateRecep=date,produit=produit,fournisseur=fournisseur)
-        zo=request.POST.getlist('zone')
-        for element in zo:
-            zone=Zone.objects.get(id=element)
-            ligneReception=LigneReception.objects.create(numLot=numLot,reception=reception,qteProd=qteProd,zone=zone,)
-        messages.success(request,"Enregistrer avec success") 
-    else:   
-        messages.error(request,"Désolé, vous n'avez pas réussie l'enregistrement, réessayer")
+    if request.method=='POST' :
+        if form.is_valid():
+            nom=request.POST.get('nom')
+            date=request.POST.get('date')
+            
+            prod=request.POST.get('produit')
+            produit=Produit.objects.get(id=prod)
+            
+            four=request.POST.get('fournisseur')
+            fournisseur=Fournisseur.objects.get(id=four)
+            
+            qteProd=request.POST.get('qteProd')
+            numLot=request.POST.get('numLot')
+            
+            reception=Reception.objects.create(nomRecep=nom,dateRecep=date,produit=produit,fournisseur=fournisseur)
+            zo=request.POST.getlist('zone')
+            for element in zo:
+                zone=Zone.objects.get(id=element)
+                ligneReception=LigneReception.objects.create(numLot=numLot,reception=reception,qteProd=qteProd,zone=zone,)
+            messages.success(request,"Enregistrer avec success") 
+        else:   
+            messages.error(request,"Désolé, vous n'avez pas réussie l'enregistrement, réessayer")
           
     listReception=Reception.objects.all()
     nomRecep=request.GET.get('nomRecep')
@@ -94,7 +95,7 @@ def receptionUpdate(request,id):
 
     
 @login_required
-@allowed_users(allowed_roles=['quai'])
+@allowed_users(allowed_roles=['quai','admin'])
 def ajouterZone(request,id):
     form=AddZone(request.POST or None)
     if request.method=='POST' and form.is_valid():
@@ -144,6 +145,8 @@ def receptionDelete(request,id):
 
 def receptionDetail(request,id):
     reception=Reception.objects.get(id=id)
+    ligneRecep=LigneReception.objects.filter(reception=id)
+    ligneRecep1=ligneRecep.first()
     zone=Zone.objects.filter(lignereception__reception=id)
     listZone=[]
     for element in zone:

@@ -12,5 +12,5 @@ class LigneReception(models.Model):
     
     
     def __str__(self):
-        champs=" reception: {}| zone: {}| quantité: {} ".format(self.reception,self.zone,self.qteProd)
+        champs=" reception: {}| zone: {} ".format(self.reception,self.zone)
         return champs

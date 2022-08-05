@@ -54,7 +54,7 @@ var KTWidgets = function () {
                 colors: ['transparent']
             },
             xaxis: {
-                categories: ['jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                categories: ['jan','Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jui','Aoû','Sep','Oct','Nov','Déc'],
                 axisBorder: {
                     show: false,
                 },
@@ -143,10 +143,7 @@ var KTWidgets = function () {
 
         var options = {
             series: [{
-                name: 'Net Profit',
-                data: quantite2
-            }, {
-                name: 'Revenue',
+                name: 'quantite',
                 data: quantite2
             }],
             chart: {
@@ -176,7 +173,7 @@ var KTWidgets = function () {
                 colors: ['transparent']
             },
             xaxis: {
-                categories: ['jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                categories: ['jan','Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jui','Aoû','Sep','Oct','Nov','Déc'],
                 axisBorder: {
                     show: false,
                 },

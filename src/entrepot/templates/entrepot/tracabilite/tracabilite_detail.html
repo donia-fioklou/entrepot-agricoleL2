@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{%block soustitre %} Traçabilité {%endblock%}
+{%block content %}
+<div class="card mb-5 mb-xl-8">
+    <!--begin::Card body-->
+    <div class="card-body pt-15">
+        <div class="separator separator-dashed my-3"></div>
+        <!--begin::Details content-->
+        <div id="kt_customer_view_details" class="collapse show">
+            <div class="py-5 fs-6">
+               <!--begin::Edit-->
+               
+                <!--end::Delete-->
+
+                <!--begin::Details item-->
+                <div class="fw-bolder mt-5">Nom</div>
+                <div class="text-gray-600">{{expedition.nomExp}}</div>
+                <div class="fw-bolder mt-5">Date</div>
+                <div class="text-gray-600">{{expedition.dateExp}}</div>
+                <div class="fw-bolder mt-5">Conteneur</div>
+                <div class="text-gray-600">{{leConteneur}}</div>
+                <div class="fw-bolder mt-5">ligne reception</div>
+                {% for i in iId %}
+                <div class="text-gray-600">{{i}}</div>
+                {% endfor %}
+                <!--begin::Details item-->
+                
+            </div>
+        </div>
+        <!--end::Details content-->
+        <a href="{% url 'expeditions' %}">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">
+                Retour à la liste</button>
+        </a>
+    </div>
+    <!--end::Card body-->
+</div>
+
+
+
+{%endblock%}
+                            

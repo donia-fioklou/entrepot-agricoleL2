@@ -88,9 +88,25 @@ License: For each use you must have a valid license purchased only from above li
 										</a>
 									</div>
 								</div>
-								
+								<div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
+									<div class="menu-item">
+										<a class="menu-link active" href="{% url 'tracabilite' %}">
+											<span class="menu-icon">
+												<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
+												<span class="svg-icon svg-icon-2">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+														<path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" d="M11 4.25769C11 3.07501 9.9663 2.13515 8.84397 2.50814C4.86766 3.82961 2 7.57987 2 11.9999C2 13.6101 2.38057 15.1314 3.05667 16.4788C3.58731 17.5363 4.98303 17.6028 5.81966 16.7662L5.91302 16.6728C6.60358 15.9823 6.65613 14.9011 6.3341 13.9791C6.11766 13.3594 6 12.6934 6 11.9999C6 9.62064 7.38488 7.56483 9.39252 6.59458C10.2721 6.16952 11 5.36732 11 4.39046V4.25769ZM16.4787 20.9434C17.5362 20.4127 17.6027 19.017 16.7661 18.1804L16.6727 18.087C15.9822 17.3964 14.901 17.3439 13.979 17.6659C13.3594 17.8823 12.6934 17.9999 12 17.9999C11.3066 17.9999 10.6406 17.8823 10.021 17.6659C9.09899 17.3439 8.01784 17.3964 7.3273 18.087L7.23392 18.1804C6.39728 19.017 6.4638 20.4127 7.52133 20.9434C8.86866 21.6194 10.3899 21.9999 12 21.9999C13.6101 21.9999 15.1313 21.6194 16.4787 20.9434Z" fill="#12131A" />
+														<path fill-rule="evenodd" clip-rule="evenodd" d="M13 4.39046C13 5.36732 13.7279 6.16952 14.6075 6.59458C16.6151 7.56483 18 9.62064 18 11.9999C18 12.6934 17.8823 13.3594 17.6659 13.9791C17.3439 14.9011 17.3964 15.9823 18.087 16.6728L18.1803 16.7662C19.017 17.6028 20.4127 17.5363 20.9433 16.4788C21.6194 15.1314 22 13.6101 22 11.9999C22 7.57987 19.1323 3.82961 15.156 2.50814C14.0337 2.13515 13 3.07501 13 4.25769V4.39046Z" fill="#12131A" />
+													</svg>
+												</span>
+												<!--end::Svg Icon-->
+											</span>
+											<span class="menu-title">Traçabilité</span>
+										</a>
+									</div>
+								</div>
 								<div class="menu-item">
-									<a class="menu-link active" href="{% url 'entrepots' %}">
+									<a class="menu-link active" href="{% url 'receptions' %}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -107,114 +123,13 @@ License: For each use you must have a valid license purchased only from above li
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">Entrepôt</span>
+										<span class="menu-title">Réception</span>
 									</a>
 								</div>
-
 								<div class="menu-item">
-									<a class="menu-link active" href="{% url 'zones' %}">
+									<a class="menu-link active" href="{% url 'expeditions' %}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-														<rect x="0" y="0" width="24" height="24" />
-														<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-														<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-													</g>
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Zone</span>
-									</a>
-								</div>
-
-								
-								<div class="menu-item">
-									<a class="menu-link active" href="{% url 'fournisseurs' %}">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-														<polygon points="0 0 24 0 24 24 0 24" />
-														<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-														<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
-													</g>
-												</svg>
-											</span>
-											<!--end::Svg Icon-->										
-
-										</span>
-										<span class="menu-title">Fournisseur</span>
-									</a>
-								</div>
-
-								<div class="menu-item">
-									<a class="menu-link active" href="{% url 'conteneurs' %}">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-														<polygon points="0 0 24 0 24 24 0 24" />
-														<path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-														<rect fill="#000000" x="6" y="11" width="9" height="2" rx="1" />
-														<rect fill="#000000" x="6" y="15" width="5" height="2" rx="1" />
-													</g>
-												</svg>
-											</span>
-											<!--end::Svg Icon-->										
-
-										</span>
-										<span class="menu-title">Conteneur</span>
-									</a>
-								</div>
-
-								<div class="menu-item">
-									<a class="menu-link active" href="{% url 'categories' %}">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-													<path d="M6,9 L6,15 C6,16.6568542 7.34314575,18 9,18 L15,18 L15,18.8181818 C15,20.2324881 14.2324881,21 12.8181818,21 L5.18181818,21 C3.76751186,21 3,20.2324881 3,18.8181818 L3,11.1818182 C3,9.76751186 3.76751186,9 5.18181818,9 L6,9 Z" fill="#000000" fill-rule="nonzero" />
-													<path d="M10.1818182,4 L17.8181818,4 C19.2324881,4 20,4.76751186 20,6.18181818 L20,13.8181818 C20,15.2324881 19.2324881,16 17.8181818,16 L10.1818182,16 C8.76751186,16 8,15.2324881 8,13.8181818 L8,6.18181818 C8,4.76751186 8.76751186,4 10.1818182,4 Z" fill="#000000" opacity="0.3" />
-												</svg>
-											</span>
-											<!--end::Svg Icon-->										
-
-										</span>
-										<span class="menu-title">Catégorie de produit</span>
-									</a>
-								</div>
-
-								<div class="menu-item">
-									<a class="menu-link active" href="{% url 'produits' %}">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-														<rect x="0" y="0" width="24" height="24" />
-														<path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
-														<path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
-													</g>
-												</svg>
-											</span>
-											<!--end::Svg Icon-->										
-
-										</span>
-										<span class="menu-title"> Produit</span>
-									</a>
-								</div>
-								
-
-							
-								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-									<span class="menu-link active">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
 											<span class="svg-icon svg-icon-2">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<path opacity="0.25" d="M2 6.5C2 4.01472 4.01472 2 6.5 2H17.5C19.9853 2 22 4.01472 22 6.5V6.5C22 8.98528 19.9853 11 17.5 11H6.5C4.01472 11 2 8.98528 2 6.5V6.5Z" fill="#12131A" />
@@ -225,24 +140,136 @@ License: For each use you must have a valid license purchased only from above li
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">Entrée et sortie de produit</span>
+										<span class="menu-title">Expédition</span>
+									</a>
+								</div>
+								
+								
+								
+
+							
+								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+									<span class="menu-link active">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
+											<span class="svg-icon svg-icon-2">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3" />
+													<path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000" />
+												</svg>
+											</span>
+											<!--end::Svg Icon-->
+										</span>
+										<span class="menu-title">Configuration</span>
 										<span class="menu-arrow"></span>
 									</span>
 									<div class="menu-sub menu-sub-accordion menu-active-bg">
 										<div class="menu-item">
-											<a class="menu-link" href="{% url 'receptions' %}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
+											<a class="menu-link " href="{% url 'entrepots' %}">
+												
+												<span class="menu-icon">
+													<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Réception</span>
+												
+												<span class="menu-title">Entrepôt</span>
+											</a>
+										</div>
+		
+										<div class="menu-item">
+											<a class="menu-link " href="{% url 'zones' %}">
+												<span class="menu-icon">
+													<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+													<!--end::Svg Icon-->
+												</span>
+												<span class="menu-title">Zone</span>
+											</a>
+										</div>
+		
+										
+										<div class="menu-item">
+											<a class="menu-link " href="{% url 'fournisseurs' %}">
+												<span class="menu-icon">
+													<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+													<!--end::Svg Icon-->										
+		
+												</span>
+												<span class="menu-title">Fournisseur</span>
+											</a>
+										</div>
+		
+										<div class="menu-item">
+											<a class="menu-link " href="{% url 'conteneurs' %}">
+												<span class="menu-icon">
+													<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+													<!--end::Svg Icon-->										
+		
+												</span>
+												<span class="menu-title">Conteneur</span>
 											</a>
 										</div>
 										<div class="menu-item">
-											<a class="menu-link" href="{% url 'expeditions' %}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
+											<a class="menu-link" href="{% url 'clients' %}">
+												<span class="menu-icon">
+													<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Expédition</span>
+												<span class="menu-title">Client</span>
+											</a>
+										</div>
+										<div class="menu-item">
+											<a class="menu-link" href="{% url 'bateaus' %}">
+												<span class="menu-icon">
+													<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+													<!--end::Svg Icon-->
+												</span>
+												<span class="menu-title">Bateau</span>
+											</a>
+										</div>
+		
+										<div class="menu-item">
+											<a class="menu-link " href="{% url 'categories' %}">
+												<span class="menu-icon">
+													<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+													<!--end::Svg Icon-->										
+		
+												</span>
+												<span class="menu-title">Catégorie de produit</span>
+											</a>
+										</div>
+		
+										<div class="menu-item">
+											<a class="menu-link " href="{% url 'produits' %}">
+												<span class="menu-icon">
+													<!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+													<!--end::Svg Icon-->										
+		
+												</span>
+												<span class="menu-title"> Produit</span>
 											</a>
 										</div>
 										

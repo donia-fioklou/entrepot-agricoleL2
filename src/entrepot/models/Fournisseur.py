@@ -12,4 +12,4 @@ class Fournisseur(models.Model):
         return  self.nom
     
     class Meta():
-        verbose_name="Produit"
+        verbose_name="Client"

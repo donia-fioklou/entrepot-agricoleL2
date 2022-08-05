@@ -108,7 +108,9 @@
         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 
           <th class="min-w-125px">#</th>
-          <th class="min-w-125px">Numéro</th>
+          <th class="min-w-125px">Id Proprietaire</th>
+          <th class="min-w-125px">Numéro conteneur</th>
+          <th class="min-w-125px">Type conteneur</th>
           <th class="text-end min-w-70px">Actions</th>
         </tr>
         <!--end::Table row-->
@@ -120,7 +122,10 @@
         <tr>
           
           <td>{{forloop.counter}}</td>
-          <td><a href="{% url 'detail_conteneurs' conteneur.pk %}">{{conteneur.numCon}}</a></td>
+          <td><a href="{% url 'detail_conteneurs' conteneur.pk %}">{{conteneur.IdProprietaire}}</a></td>
+          <td>{{conteneur.numCon}}</td>
+          <td>{{conteneur.typeCon}}</td>
+          
          
           
           <td class="text-end">
