@@ -71,7 +71,7 @@ def reception_list_create(request):
     return render(request,"entrepot/reception/reception_list.html",locals())
 
 @login_required
-@allowed_users(allowed_roles=['quai'])
+@allowed_users(allowed_roles=['quai','admin'])
 def receptionUpdate(request,id):
     reception=Reception.objects.get(id=id)
     ligneReception=LigneReception.objects.filter(reception=id)

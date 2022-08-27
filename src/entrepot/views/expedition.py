@@ -1,4 +1,5 @@
 
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -6,6 +7,8 @@ from entrepot.decorators import allowed_users
 
 from entrepot.forms.expedition import ExpeditionForm
 from entrepot.models import Expedition, Zone
+from entrepot.models.Bateau import Bateau
+from entrepot.models.Client import Client
 from entrepot.models.Conteneur import Conteneur
 from entrepot.models.LigneReception import LigneReception
 from entrepot.models.LigneConteneur import LigneConteneur
@@ -27,9 +30,11 @@ def expedition_list_create(request):
             nom=request.POST.get('nom')
             date=request.POST.get('date')
             numCon=request.POST.get('numCont')
+            cli=request.POST.get('client')
             ligneReception=request.POST.getlist('ligneReception')
             conteneur=Conteneur.objects.get(id=numCon)
-            expedition=Expedition.objects.create(conteneur=conteneur,nomExp=nom,dateExp=date)
+            client=Client.objects.get(id=cli)
+            expedition=Expedition.objects.create(conteneur=conteneur,nomExp=nom,dateExp=date,client=client)
             exp=Expedition.objects.last()
             for i in ligneReception:
                 ligneReception=LigneReception.objects.get(id=i)
@@ -68,7 +73,10 @@ def expeditionDetail(request,id):
     expeditionList=Expedition.objects.filter(id=id)
     expeditionId=expeditionList.values()[0]["id"]
     leConteneur=Conteneur.objects.get(expedition__id=expeditionId)
+    #idConteneur=leConteneur.values()[0]["id"]
+    #leBateau=Bateau.objects.get(conteneur__id=idConteneur)
     ligneConteneur=LigneConteneur.objects.filter(expedition=expedition.id)
+    
     iId=[]
     for i in ligneConteneur:
        iId.append(LigneReception.objects.get(id=i.ligneReception_id))
